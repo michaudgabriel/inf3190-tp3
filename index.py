@@ -1,4 +1,4 @@
-# Copyright 2023 <Votre nom et code permanent>
+# Copyright 2023 Gabriel Michaud (MICG93070107)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
