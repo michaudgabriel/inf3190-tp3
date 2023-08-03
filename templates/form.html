@@ -16,19 +16,14 @@
             <input type="text" id="bar" placeholder="Nom de race d'animaux...">
             <a id="remplir" href="something.html">Mettre en adoption</a>
         </div>
-        <a href="grilled_cheese.html">
+        <a href="something.html">
+	    {% for i in range(0, 4) %}
             <div class="recette">
-                <h2>Le fameux grilled cheese</h2>
-                <p>Facile à préparer et succulent lorsque bien apprêter. <br>
-                    Tout le monde doit apprendre cette recette.</p>
+		    <h2>{{ nom1 }}</h2>
+		    <p>{{ age }}<br>
+		       {{ ville }}</p>
             </div>
-        </a>
-        <a href="salade_grecque.html">
-            <div class="recette">
-                <h2>La délicieuse salade grecque</h2>
-                <p>Impossible de se tromper avec la salade grecque. <br>
-                    C'est un plat d'accompagnement simple et plus "fancy" que d'autre sur ce site.</p>
-            </div>
+            {% endfor %}
         </a>
     </body>
 </html>

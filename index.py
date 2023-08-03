@@ -16,6 +16,7 @@ from flask import Flask
 from flask import render_template
 from flask import g
 from .database import Database
+import random
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
@@ -37,7 +38,11 @@ def close_connection(exception):
 @app.route('/')
 def form():
     animaux = get_db().get_animaux()
-    print(animaux)
-    #for animal in animaux :
-        #print("lol")
+    i = 0
+    while i < 5:
+        choix = random.choice(animaux)
+        animaux.remove(choix)
+
+        i += 1
+    animaux.diconnect()
     return render_template('form.html')
