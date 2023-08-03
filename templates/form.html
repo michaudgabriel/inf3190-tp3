@@ -6,12 +6,12 @@
               content="Animaux, adoption">
         <meta name="author" content="Gabriel Michaud">
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="../static/css/form.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form.css') }}">
         <title>Adoption Animal</title>
     </head>
     <body>
         <div class="menu">
-            <a href="form.html"><img src="../logo_animal.png" alt="Adoption"></a>
+		<a href="form.html"><img src="{{ url_for('static', filename='images/logo_animal.png') }}" alt="Adoption"></a>
             <label for="bar"></label>
             <input type="text" id="bar" placeholder="Nom de race d'animaux...">
             <a id="remplir" href="something.html">Mettre en adoption</a>
@@ -30,7 +30,6 @@
                     C'est un plat d'accompagnement simple et plus "fancy" que d'autre sur ce site.</p>
             </div>
         </a>
-         {}
     </body>
 </html>
 
