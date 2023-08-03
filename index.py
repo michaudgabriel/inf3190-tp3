@@ -36,5 +36,8 @@ def close_connection(exception):
 
 @app.route('/')
 def form():
-    # À remplacer par le contenu de votre choix.
+    animaux = get_db().get_animaux()
+    print(animaux)
+    #for animal in animaux :
+        #print("lol")
     return render_template('form.html')

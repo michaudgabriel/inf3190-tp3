@@ -1,0 +1,51 @@
+body {
+    max-width: 1000px;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+a div {
+    height: 225px;
+    width: 1000px;
+    font-size: 20px;
+    background: white;
+    text-decoration: none;
+    color: black;
+}
+.recette:hover {
+    text-decoration: underline;
+    border: solid black;
+}
+.menu {
+    width: 100%;
+    left: 0;
+    margin: 0;
+    max-width: none;
+    background-color: #222633;
+}
+.menu a {
+    float: left;
+    display: block;
+    margin-bottom: 10px;
+}
+.menu #remplir {
+    float: right;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    margin-right: 100px;
+    padding: 23px 0 23px;
+}
+.menu #remplir:hover {
+    border: solid #A2D42A;
+    color: #A2D42A;
+}
+.menu input[type=text] {
+    padding: 6px;
+    border: none;
+    margin: 20px 16px 22px 10px;
+    font-size: 17px;
+}
