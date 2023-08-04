@@ -15,6 +15,7 @@
 from flask import Flask
 from flask import render_template
 from flask import g
+from flask import request
 from .database import Database
 import random
 
@@ -58,3 +59,13 @@ def form():
 def page_animal():
     animal = request.args.get('animal')
     return render_template('page.html', animal=animal)
+
+@app.route('/formulaire/', methods=('GET', 'POST'))
+def formulaire():
+    if request.method == 'POST':
+        espece = request.form['espece']
+        if not nom:
+            flash('nom is required')
+        else:    
+            return redirect(url_for('static', 'html/validation.html'))
+    return render_template('formulaire.html')    

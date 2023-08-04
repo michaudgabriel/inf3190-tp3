@@ -6,21 +6,21 @@
         content="Animaux, adoption">
   <meta name="author" content="Gabriel Michaud">
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="../css/form.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form.css') }}">
   <title>Adoption Animal</title>
 </head>
 <body>
     <div class="menu">
-        <a href="/"><img src="../images/logo_animal.png" alt="Adoption"></a>
+	    <a href="/"><img src="{{ url_for('static', filename='images/logo_animal.png') }}" alt="Adoption"></a>
         <label for="bar"></label>
         <input type="text" id="bar" placeholder="Nom de race d'animaux...">
 	<a id="remplir" href="">Mettre en adoption</a>
     </div>
     <form method="post">
 	<br><label for="nom">Nom de l'animal : </label>
-        <input id="nom" type="text" minlength="3" maxlength="20"><br>
+	<input id="nom" type="text" minlength="3" maxlength="20"><br>
         <label for="espece">Nom de l'espèce : </label>
-        <input id="espece" type="text"><br>
+        <input id="espece" type="text" value="{{ request.form['espece'] }}"><br>
         <label for="race">Nom de la race : </label>
         <input id="race" type="text"><br>
         <label for="age">Age : </label>
