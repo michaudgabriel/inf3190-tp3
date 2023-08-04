@@ -38,11 +38,18 @@ def close_connection(exception):
 @app.route('/')
 def form():
     animaux = get_db().get_animaux()
+    animaux_choisis = []
     i = 0
     while i < 5:
         choix = random.choice(animaux)
-        animaux.remove(choix)
-
-        i += 1
-    animaux.diconnect()
-    return render_template('form.html')
+        id = choix["id"]
+        j = 0
+        trouve = False
+        while not trouve and j < len(animaux_choisis):
+            if id == animaux_choisis[j]["id"]:
+                trouve = True
+            j += 1
+        if not trouve:
+            animaux_choisis.append(choix)
+            i += 1
+    return render_template('form.html', animaux = animaux_choisis)

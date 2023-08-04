@@ -17,11 +17,13 @@
             <a id="remplir" href="something.html">Mettre en adoption</a>
         </div>
         <a href="something.html">
-	    {% for i in range(0, 4) %}
+	    {% for i in range(0, 5) %}
             <div class="recette">
-		    <h2>{{ nom1 }}</h2>
-		    <p>{{ age }}<br>
-		       {{ ville }}</p>
+		    <h2>Nom : {{ animaux[i]["nom"] }}</h2>
+		    <p>Espèce : {{ animaux[i]["espece"] }}<br>
+		    Race : {{ animaux[i]["race"] }}<br>
+		    Age : {{ animaux[i]["age"] }}<br>
+		    Description : {{ animaux[i]["description"] }}</p>
             </div>
             {% endfor %}
         </a>
