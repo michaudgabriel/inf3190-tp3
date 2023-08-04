@@ -51,4 +51,29 @@ a div {
 }
 textarea {
     resize: none;
+    font-size: 17px;
+}
+input {
+    margin-top: 20px;
+    font-size: 17px
+}
+form {
+    font-size: 20px;
+}
+
+/* https://stackoverflow.com/a/4298216 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+#age {
+    width: 30px;
+}
+#cp {
+    width: 70px;
 }

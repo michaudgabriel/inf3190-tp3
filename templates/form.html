@@ -14,7 +14,7 @@
 		<a href="form.html"><img src="{{ url_for('static', filename='images/logo_animal.png') }}" alt="Adoption"></a>
             <label for="bar"></label>
             <input type="text" id="bar" placeholder="Nom de race d'animaux...">
-            <a href="{{ url_for('mettre_en_adoption') }}">Mettre en adoption</a>
+	    <a id="remplir" href="{{ url_for('static', filename='html/formulaire.html') }}">Mettre en adoption</a>
         </div>
         {% for i in range(0, 5) %}
             <a href="{{ url_for('page_animal') }}">
