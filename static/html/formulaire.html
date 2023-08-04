@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta name="description" content="Adoption animal">
+  <meta name="keywords"
+        content="Animaux, adoption">
+  <meta name="author" content="Gabriel Michaud">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form.css') }}">
+  <title>Adoption Animal</title>
+</head>
+<body>
+    <div class="menu">
+        <a href="form.html"><img src="{{ url_for('static', filename='images/logo_animal.png') }}" alt="Adoption"></a>
+        <label for="bar"></label>
+        <input type="text" id="bar" placeholder="Nom de race d'animaux...">
+        <a id="remplir" href="something.html">Mettre en adoption</a>
+    </div>
+    <form>
+        <label for="nom">Nom de l'animal: </label>
+        <input id="nom" type="text" maxlength="20" minlength="3"><br>
+        <label for="espece">Nom de l'espèce : </label>
+        <input id="espece" type="text"><br>
+        <label for="race">Nom de la race : </label>
+        <input id="race" type="text"><br>
+        <label for="age">Age : </label>
+        <input id="age" type="number"><br>
+        <label for="description">Description : </label>
+        <textarea id="description" placeholder="Description..."></textarea><br>
+        <label for="courriel">Adresse courriel : </label>
+        <input id="courriel" type="email"><br>
+        <label for="adresse">Adresse civique : </label>
+        <input id="adresse" type="text"><br>
+        <label for="ville">Ville : </label>
+        <input id="ville" type="text"><br>
+        <label for="cp">Code postal : </label>
+        <input id="cp" type="text"><br>
+        <input type="reset" value="Vider">
+        <input type="submit" value="Envoyer">
+    </form>
+</body>
+</html>

@@ -49,3 +49,6 @@ a div {
     margin: 20px 16px 22px 10px;
     font-size: 17px;
 }
+textarea {
+    resize: none;
+}

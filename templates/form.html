@@ -16,16 +16,16 @@
             <input type="text" id="bar" placeholder="Nom de race d'animaux...">
             <a id="remplir" href="something.html">Mettre en adoption</a>
         </div>
-        <a href="something.html">
+        <a>
 	    {% for i in range(0, 5) %}
             <div class="recette">
-		    <h2>Nom : {{ animaux[i]["nom"] }}</h2>
+		    <h2 id="nom">Nom : {{ animaux[i]["nom"] }}</h2>
 		    <p>Espèce : {{ animaux[i]["espece"] }}<br>
 		    Race : {{ animaux[i]["race"] }}<br>
 		    Age : {{ animaux[i]["age"] }}<br>
 		    Description : {{ animaux[i]["description"] }}</p>
             </div>
-            {% endfor %}
+        {% endfor %}
         </a>
     </body>
 </html>
