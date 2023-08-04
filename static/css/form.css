@@ -13,7 +13,7 @@ a div {
     text-decoration: none;
     color: black;
 }
-.recette:hover {
+.animal:hover {
     text-decoration: underline;
     border: solid black;
 }

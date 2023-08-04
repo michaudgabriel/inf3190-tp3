@@ -53,3 +53,8 @@ def form():
             animaux_choisis.append(choix)
             i += 1
     return render_template('form.html', animaux = animaux_choisis)
+
+@app.route('/page_animal/<nom>')
+def page_animal():
+    animal = request.args.get('animal')
+    return render_template('page.html', animal=animal)
