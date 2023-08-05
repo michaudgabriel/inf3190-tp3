@@ -109,7 +109,7 @@ function validerEmail(valide) {
 }
 function verifierFormatCodePostal() {
     let cp = document.getElementById("cp");
-    let expression = /^((?![DFIOQU])[A-Z])(/d)\1\u0020\2\1\2$/;
+    let expression = /^((?![DFIOQUWZ])[A-Z])\d\(?![DFIOQU])[A-Z])[ ]\d(?![DFIOQU])[A-Z])\d$/;
     let valide = true;
 
 }
