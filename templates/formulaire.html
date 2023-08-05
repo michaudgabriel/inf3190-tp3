@@ -7,6 +7,7 @@
   <meta name="author" content="Gabriel Michaud">
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   <title>Adoption Animal</title>
 </head>
 <body>
@@ -16,25 +17,26 @@
         <input type="text" id="bar" placeholder="Nom de race d'animaux...">
 	<a id="remplir" href="">Mettre en adoption</a>
     </div>
-    <form method="post">
+    <form method="post" onsubmit="return validerFormulaire()">
 	<br><label for="nom">Nom de l'animal : </label>
-	<input id="nom" type="text" minlength="3" maxlength="20"><br>
+	<input id="nom" type="text"name="nom" value="{{ request.form['nom'] }}" minlength="3" maxlength="20"><br>
         <label for="espece">Nom de l'espèce : </label>
-        <input id="espece" type="text" value="{{ request.form['espece'] }}"><br>
+        <input id="espece" type="text" name="espece" value="{{ request.form['espece'] }}"><br>
         <label for="race">Nom de la race : </label>
-        <input id="race" type="text"><br>
+	<input id="race" type="text" name="race" value="{{ request.form['race'] }}"><br>
         <label for="age">Age : </label>
-        <input id="age" type="number"><br>
+	<input id="age" type="number" name="age" value="{{ request.form['age'] }}"><br>
         <label for="courriel">Adresse courriel : </label>
-        <input id="courriel" type="email"><br>
+	<input id="courriel" type="email" name="courriel" value="{{ request.form['courriel'] }}"><br>
         <label for="adresse">Adresse civique : </label>
-        <input id="adresse" type="text"><br>
+	<input id="adresse" type="text" name="adresse" value="{{ request.form['adresse'] }}"><br>
         <label for="ville">Ville : </label>
-        <input id="ville" type="text"><br>
+	<input id="ville" type="text" name="ville" value="{{ request.form['ville'] }}"><br>
         <label for="cp">Code postal : </label>
 	<input id="cp" type="text" maxlength="7" minlength="7"><br><br>
 	<label for="description">Description :<br> 
-	    <textarea id="description" placeholder="Description..." cols="100" rows="5"></textarea>
+		<textarea id="description" placeholder="Description..." name="description" value="{{ request.form['description'} }}" 
+			cols="100" rows="5"></textarea>
 	</label><br>
         <input type="reset" value="Vider">
         <input type="submit" value="Envoyer">

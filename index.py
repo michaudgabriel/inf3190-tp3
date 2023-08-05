@@ -15,12 +15,14 @@
 from flask import Flask
 from flask import render_template
 from flask import g
+from flask import url_for
 from flask import request
+from flask import redirect
 from .database import Database
 import random
 
 app = Flask(__name__, static_url_path="", static_folder="static")
-
+app.secret_key = '\x05\x94\xaavR\xf3\xd5\xf8\x1en\xfcjZ\x00cfB\x84\xce\x9f\x1c!f\xd4'
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -64,8 +66,8 @@ def page_animal():
 def formulaire():
     if request.method == 'POST':
         espece = request.form['espece']
-        if not nom:
+        if not espece:
             flash('nom is required')
         else:    
-            return redirect(url_for('static', 'html/validation.html'))
+            return redirect(url_for('static', filename='html/validation.html'))
     return render_template('formulaire.html')    
