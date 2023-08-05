@@ -38,13 +38,22 @@ function validerNom() {
     return (valide && virgule);
 }
 /**
- *
- *
+ * Cette methode permet de valider que l'âge est bien un nombre entre 0 et 30 ans.
+ * 
+ * @param valide la validite du formulaire pour l'instant
+ * @return un booleen representant la validite du formulaire apres la validation du champ present
  */
 function validerAge(valide) {
-    let virgule = true;
-    let age = document.getElementById("age");
-    if (age.leng
+    let nombre = true;
+    valide = validerChamp("age", 2, valide);
+    if (valide) {
+	age = document.getElementById("age");
+        if(isNaN(age) || age < 0 || age > 30) {
+            document.getElementById("age_invalide").innerHTML = "L'âge de l'animal doit être entre 0 et 30 ans";
+	    nombre = false;
+	}
+    }
+    return (valide && nombre);
 }
 /**
  * Cette methode permet de valider qu'un champ est rempli, ne depasse pas un certain nombre de 
@@ -98,6 +107,28 @@ function validerEmail(valide) {
     }
     return (valide && format);
 }
+function verifierFormatCodePostal() {
+    let cp = document.getElementById("cp");
+    let expression = /^((?![DFIOQU])[A-Z])(/d)\1\u0020\2\1\2$/;
+    let valide = true;
+
+}
+/**
+ *
+ *
+ *
+ */
+function validerCodePostal {
+    let format = true;
+    valide = validerChamp("cp", 7, valide);
+    if (valide) {
+        let cp = document.getElementById("cp");
+	if (cp.length != 7) {
+            document.getElementById("cp_invalide").innerHTML = "Le format requis est : \'A0A 0A0\';
+	    valide = false
+	}
+    }
+}
 /**
  * Cette methode permet de valider le formulaire entre par l'utilisateur.
  * Un message d'erreur explicatif est afficher a cote de chaque champ non valide lors de la soumission.
@@ -108,6 +139,7 @@ function validerFormulaire() {
     let valide = validerNom();
     valide = validerChamp("espece", 25, valide);
     valide = validerChamp("race", 25, valide);
+    valide = validerAge();
     valide = validerChamp("description", 200, valide);
     valide = validerEmail();
     valide = validerChamp("ville", 50, valide);
