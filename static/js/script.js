@@ -153,5 +153,6 @@ function validerFormulaire() {
     valide = validerChamp("ville", "ville_invalide", 50, valide);
     valide = validerChamp("adresse", "adresse_invalide", 50, valide);
     valide = validerCodePostal(valide);
+    document.getElementById("cp_invalide").innerHTML = "" + valide;
     return validerChamp("description", "description_invalide",200, valide);
 }

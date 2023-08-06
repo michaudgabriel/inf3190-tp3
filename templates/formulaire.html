@@ -21,12 +21,12 @@
 	<br>
 	<div>
 	    <label for="nom">Nom de l'animal : </label>
-	    <input id="nom" type="text"name="nom" value="{{ request.form['nom'] }}" maxlength="20">
-	    * <span class="message" id="nom_invalide"></span>
+	    <input id="nom" type="text" name="nom" value="{{ request.form['nom'] }}" maxlength="20">
+	    * <span id="nom_invalide"></span>
 	</div><br>
 	<div>
-            <label for="espece">Nom de l'espèce : </label>
-            <input id="espece" type="text" name="espece" value="{{ request.form['espece'] }}" maxlength="25">
+		<label for="espece">Nom de l'espèce : </label>
+		<input id="espece" type="text" name="espece" value="{{ request.form['espece'] }}" maxlength="25">
 	    * <span id="espece_invalide"></span>
 	</div><br>
 	<div>
@@ -61,8 +61,8 @@
 	    <br><br>
 	<div class="">
 	    <label for="description">Description :<br> 
-		<textarea id="description" placeholder="Description..." name="description" value="{{ request.form['description'] }}" 
-			cols="50" rows="4"></textarea>
+		<textarea id="description" placeholder="Description..." name="description"
+		        cols="50" rows="4"> {{ request.form['description'] }} </textarea>
 	    </label>
             * <span id="description_invalide"></span>
 	</div><br>
