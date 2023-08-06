@@ -39,7 +39,7 @@ def close_connection(exception):
 
 
 @app.route('/')
-def form():
+def index():
     animaux = get_db().get_animaux()
     animaux_choisis = []
     i = 0
@@ -55,7 +55,7 @@ def form():
         if not trouve:
             animaux_choisis.append(choix)
             i += 1
-    return render_template('form.html', len=5, animaux=animaux_choisis)
+    return render_template('index.html', len=5, animaux=animaux_choisis)
 
 @app.route('/page_animal/<id>')
 def page_animal(id):
@@ -69,7 +69,7 @@ def liste_animal(bar):
     for animal in animaux:
         if animal["espece"].lower() == bar:
             animaux_espece.append(animal)
-    return render_template('form.html', len=len(animaux_espece), animaux=animaux_espece)
+    return render_template('index.html', len=len(animaux_espece), animaux=animaux_espece)
 
 @app.route('/formulaire', methods=('GET', 'POST'))
 def formulaire():
@@ -84,5 +84,9 @@ def formulaire():
         ville = request.form['ville']
         cp = request.form['cp']
         get_db().add_animal(nom, espece, race, age, description, courriel, adresse, ville, cp)
-        return redirect(url_for('static', filename='html/validation.html'))
-    return render_template('formulaire.html')    
+        return redirect(url_for('validation'))
+    return render_template('formulaire.html') 
+
+@app.route('/validation')
+def validation():
+    return render_template('validation.html')

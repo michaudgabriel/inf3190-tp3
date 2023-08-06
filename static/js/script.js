@@ -10,7 +10,7 @@ function verifierVirgules(valeur, champ_invalide) {
     let valide = true;
     while (valide && i < valeur.length) { 
         if(valeur.charAt(i) === ',') {
-            document.getElementById(champ_invalide).innerHTML = "Le champ ne doit pas contenir de virgule ( , )";
+            document.getElementById(champ_invalide).innerHTML = "Le champ ne doit pas contenir de virgule";
             valide = false;
 	}
         i++; 

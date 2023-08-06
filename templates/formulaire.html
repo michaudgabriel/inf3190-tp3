@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta name="description" content="Adoption animal">
-  <meta name="keywords"
-        content="Animaux, adoption">
-  <meta name="author" content="Gabriel Michaud">
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form.css') }}">
-  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-  <title>Adoption Animal</title>
-</head>
-<body>
-    <div class="menu">
-	    <a href="/"><img src="{{ url_for('static', filename='images/logo_animal.png') }}" alt="Adoption"></a>
-        <label for="bar"></label>
-        <input type="text" id="bar" placeholder="Nom de race d'animaux...">
-	<a id="remplir" href="">Mettre en adoption</a>
-    </div>
+{% extends 'base.html' %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/formulaire.js') }}"></script>
+{% endblock %}
+{% block content %}
     <form name="adoption" action="" method="post" onsubmit="return validerFormulaire()">
 	<br>
 	<div>
@@ -69,5 +55,4 @@
         <input type="reset" value="Vider">
         <input type="submit" value="Envoyer">
     </form>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="description" content="Adoption animal">
+    <meta name="keywords"
+          content="Animaux, adoption">
+    <meta name="author" content="Gabriel Michaud">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form.css') }}">
+    {% block script %}{% endblock %}
+    <title>Adoption Animal</title>
+</head>
+<body>
+    <div class="menu">
+	<a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_animal.png') }}" alt="Adoption"></a>
+        <label for="bar"></label>
+        <input type="text" id="bar" onkeypress="return event.key !=' '" placeholder="Nom d'espèce animale...">
+        <a id="remplir" href="{{ url_for('formulaire') }}">Mettre en adoption</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/recherche.js') }}"></script>
+    {% block content %}{% endblock %}
+</body>
+</html>
