@@ -45,7 +45,7 @@ function validerNom() {
  */
 function validerAge(valide) {
     let nombre = true;
-    valide = validerChamp("age", 2, valide);
+    valide = validerChamp("age", "age_invalide", 2, valide);
     if (valide) {
         let age = document.getElementById("age").value;
         if(isNaN(age) || age < 0 || age > 30) {
@@ -60,20 +60,21 @@ function validerAge(valide) {
  * characteres et ne contient aucune virgules.
  *
  * @param champ Le nom du champ que l'on souhaite valider de type chaine de characteres
+ * @param champInvalide Le id qui conteint les messages en cas d'erreurs
  * @param max le nombre maximal de characteres acceptes pour le champ
  * @param valide la validite du formulaire pour l'instant
  * @return un booleen representant la validite du formulaire apres la validation du champ present
  */
-function validerChamp(champ, max, valide) {
+function validerChamp(champ, champInvalide, max, valide) {
     let virgule = true;
     let valeur = document.getElementById(champ).value;
     if (champ.length === 0 ) {
-        document.getElementById(champ + "_invalide").innerHTML = "Le champ est obligatoire";
+        document.getElementById(champInvalide).innerHTML = "Le champ est obligatoire";
 	valide = false;
     } else if (champ.length > max){
-        document.getElementById(champ + "_invalide").innerHTML = "Le champ ne peut pas contenir plus de " + max + " charactères";
+        document.getElementById(champInvalide).innerHTML = "Le champ ne peut pas contenir plus de " + max + " charactères";
     } else {
-	virgule = verifierVirgules(valeur, champ + "_invalide");
+	virgule = verifierVirgules(valeur, champInvalide);
     }
     return (valide && virgule);
 }
@@ -127,7 +128,7 @@ function estCodePostalValide(cp) {
  * @return un booleen representant la validite du formulaire apres la validation du champ present 
  */
 function validerCodePostal(valide) {
-    valide = validerChamp("cp", 7, valide);
+    valide = validerChamp("cp", "cp_invalide", 7, valide);
     if (valide) {
         let cp = document.getElementById("cp").value;
 	if (cp.length !== 7 || !estCodePostalValide) {
@@ -145,12 +146,12 @@ function validerCodePostal(valide) {
  */
 function validerFormulaire() {
     let valide = validerNom();
-    valide = validerChamp("espece", 25, valide);
-    valide = validerChamp("race", 25, valide);
+    valide = validerChamp("espece", "espece_invalide", 25, valide);
+    valide = validerChamp("race", "race_invalide", 25, valide);
     valide = validerAge(valide);
-    valide = validerChamp("description", 200, valide);
+    valide = validerChamp("description", "description_invalide",200, valide);
     valide = validerEmail(valide);
-    valide = validerChamp("ville", 50, valide);
-    valide = validerChamp("adresse", 50, valide);
+    valide = validerChamp("ville", "ville_invalide", 50, valide);
+    valide = validerChamp("adresse", "adresse_invalide", 50, valide);
     return validerCodePostal(valide);
 }
