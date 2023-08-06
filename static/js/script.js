@@ -162,3 +162,7 @@ function validerFormulaire() {
     valide = validerCodePostal(valide);
     return validerChamp("description", "description_invalide", 200, valide);
 }
+function verifierEntre() {
+    let entree = document.getElementById("bar").value;
+    return entree.length > 0;
+}

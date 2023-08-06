@@ -86,3 +86,7 @@ form div input {
 form div label {
     color: black;
 }
+.page {
+    font-size: 20px;
+    line-height: 200%;
+}

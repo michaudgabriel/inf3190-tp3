@@ -57,9 +57,9 @@ def form():
             i += 1
     return render_template('form.html', animaux = animaux_choisis)
 
-@app.route('/page_animal/')
-def page_animal():
-    animal = request.args.get('animal')
+@app.route('/page_animal/<id>', methods=('GET', 'POST'))
+def page_animal(id):
+    animal = get_db().get_animal(id)
     return render_template('page.html', animal=animal)
 
 @app.route('/formulaire/', methods=('GET', 'POST'))
