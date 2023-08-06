@@ -77,3 +77,6 @@ input[type=number] {
 #cp {
     width: 70px;
 }
+.message {
+    color: red;
+}
