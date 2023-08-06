@@ -145,6 +145,7 @@ function validerCodePostal(valide) {
  * return true si tous les champs sont valides, sinon false
  */
 function validerFormulaire() {
+    event.preventDefault();
     let valide = validerNom();
     valide = validerChamp("espece", 25, valide);
     valide = validerChamp("race", 25, valide);

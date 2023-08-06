@@ -66,8 +66,5 @@ def page_animal():
 def formulaire():
     if request.method == 'POST':
         espece = request.form['espece']
-        if not espece:
-            flash('nom is required')
-        else:    
-            return redirect(url_for('static', filename='html/validation.html'))
+        return redirect(url_for('static', filename='html/validation.html'))
     return render_template('formulaire.html')    

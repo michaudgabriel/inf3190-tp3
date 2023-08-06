@@ -17,21 +17,21 @@
         <input type="text" id="bar" placeholder="Nom de race d'animaux...">
 	<a id="remplir" href="">Mettre en adoption</a>
     </div>
-    <form method="post" onsubmit="return validerFormulaire()">
+    <form name="adoption" action="" method="post" onsubmit="return validerFormulaire()">
 	<br>
 	<div>
 	    <label for="nom">Nom de l'animal : </label>
-	    <input id="nom" type="text"name="nom" value="{{ request.form['nom'] }}" minlength="3" maxlength="20">
+	    <input id="nom" type="text"name="nom" value="{{ request.form['nom'] }}" maxlength="20">
 	    * <span class="message" id="nom_invalide"></span>
 	</div><br>
 	<div>
             <label for="espece">Nom de l'espèce : </label>
-            <input id="espece" type="text" name="espece" value="{{ request.form['espece'] }}">
+            <input id="espece" type="text" name="espece" value="{{ request.form['espece'] }}" maxlength="25">
 	    * <span id="espece_invalide"></span>
 	</div><br>
 	<div>
             <label for="race">Nom de la race : </label>
-	    <input id="race" type="text" name="race" value="{{ request.form['race'] }}">
+	    <input id="race" type="text" name="race" value="{{ request.form['race'] }}" maxlength="25">
 	    * <span id="race_invalide"></span>
 	</div><br>
 	<div>
@@ -41,22 +41,22 @@
 	</div><br>
 	<div>
             <label for="courriel">Adresse courriel : </label>
-	    <input id="courriel" type="email" name="courriel" value="{{ request.form['courriel'] }}">
+	    <input id="courriel" type="email" name="courriel" value="{{ request.form['courriel'] }}" maxlength="80">
 	    * <span id="email_invalide"></span>
 	</div><br>
 	<div>
             <label for="adresse">Adresse civique : </label>
-	    <input id="adresse" type="text" name="adresse" value="{{ request.form['adresse'] }}">
+	    <input id="adresse" type="text" name="adresse" value="{{ request.form['adresse'] }}" maxlength="50">
 	    * <span id="adresse_invalide"></span>
 	</div><br>
 	<div>
             <label for="ville">Ville : </label>
-	    <input id="ville" type="text" name="ville" value="{{ request.form['ville'] }}">
+	    <input id="ville" type="text" name="ville" value="{{ request.form['ville'] }}" maxlength="50">
 	    * <span id="ville_invalide"></span>
 	</div><br>
 	<div>
             <label for="cp">Code postal : </label>
-	    <input id="cp" type="text" maxlength="7" minlength="7">
+	    <input id="cp" type="text" maxlength="7">
 	    * <span id="cp_invalide"></span></div>
 	    <br><br>
 	<div class="">
