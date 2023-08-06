@@ -65,6 +65,15 @@ def page_animal():
 @app.route('/formulaire/', methods=('GET', 'POST'))
 def formulaire():
     if request.method == 'POST':
+        nom = request.form['nom']
         espece = request.form['espece']
+        race = request.form['race']
+        age = request.form['age']
+        description = request.form['description']
+        courriel = request.form['courriel']
+        adresse = request.form['adresse']
+        ville = request.form['ville']
+        cp = request.form['cp']
+        get_db().add_animal(nom, espece, race, age, description, courriel, adresse, ville, cp)
         return redirect(url_for('static', filename='html/validation.html'))
     return render_template('formulaire.html')    
