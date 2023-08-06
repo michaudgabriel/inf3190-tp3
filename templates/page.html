@@ -1,30 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta name="description" content="Adoption animal">
-        <meta name="keywords"
-              content="Animaux, adoption">
-        <meta name="author" content="Gabriel Michaud">
-        <meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form.css') }}">
-        <title>Adoption Animal</title>
-    </head>
-    <body>
-        <div class="menu">
-		<a href="/"><img src="{{ url_for('static', filename='images/logo_animal.png') }}" alt="Adoption"></a>
-            <label for="bar"></label>
-            <input type="text" id="bar" placeholder="Nom de race d'animaux...">
-	    <a id="remplir" href="{{ url_for('formulaire') }}">Mettre en adoption</a>
-        </div>
-	<div class="page">
-	    <h2>Nom : {{ animal["nom"] }}</h2>
-	   <p>Espèce : {{ animal["espece"] }}<br>
-	    Race : {{ animal["race"] }}<br>
-	    Age : {{ animal["age"] }}<br>
-	    Adresse : {{ animal["adresse"] }}, {{ animal["ville"] }}, Québec, {{ animal["cp"] }}<br>
-	    Description : {{ animal["description"] }}<br>
-	    Pour rejoindre le propriétaire : <a href="mailto: {{ animal["courriel"] }}">{{ animal["courriel"] }}</a>
-	   </p>
-	</div>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="page">
+	<br> <h2>Nom : {{ animal["nom"] }}</h2>
+        <p>Espèce : {{ animal["espece"] }}<br>
+         Race : {{ animal["race"] }}<br>
+         Age : {{ animal["age"] }}<br>
+         Adresse : {{ animal["adresse"] }}, {{ animal["ville"] }}, Québec, {{ animal["cp"] }}<br>
+         Description : {{ animal["description"] }}<br>
+         Pour rejoindre le propriétaire : <a href="mailto: {{ animal["courriel"] }}">{{ animal["courriel"] }}</a>
+        </p>
+    </div>
+{% endblock %}

@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for i in range(0, len) %}
-        <a href="{{ url_for('page_animal', id=animaux[i]["id"]) }}">
-            <div class="animal">
-            <h2>Nom : {{ animaux[i]["nom"] }}</h2>
-            <p>Espèce : {{ animaux[i]["espece"] }}<br>
-            Race : {{ animaux[i]["race"] }}<br>
-            Age : {{ animaux[i]["age"] }}<br>
-            Description : {{ animaux[i]["description"] }}</p>
-            </div>
-        </a>
-    {% endfor %}
+    {% if len > 0 %}
+        {% for i in range(0, len) %}
+            <a href="{{ url_for('page_animal', id=animaux[i]["id"]) }}">
+                <div class="animal">
+                <h2>Nom : {{ animaux[i]["nom"] }}</h2>
+                <p>Espèce : {{ animaux[i]["espece"] }}<br>
+                Race : {{ animaux[i]["race"] }}<br>
+                Age : {{ animaux[i]["age"] }}<br>
+                Description : {{ animaux[i]["description"] }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    {% else %}
+        <h2>Auncun résultat.</h2>
+	<p>Il n'y a auncun animal de cette espece en adoption en ce moment.</p>
+    {% endif %}
 {% endblock %}
