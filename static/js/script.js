@@ -107,27 +107,36 @@ function validerEmail(valide) {
     }
     return (valide && format);
 }
-function verifierFormatCodePostal() {
-    let cp = document.getElementById("cp");
+/**
+ * Cette methode permet de valider le code postal selon le format canadien.
+ * Le format canadien est : 'A0A 0A0'. Le code postal doit contenir aucune des lettres suivantes :
+ * D, F, O, Q, U et ne doit pas commencer avec un Z ou un W. 
+ * Les lettres minuscules ne sont pas acceptees.
+ *
+ * @param cp le code postal a valider
+ * @return true si le code postal est valide, sinon false
+ */
+function estCodePostalValide(cp) {
     let expression = /^(?![DFIOQUWZ])[A-Z]\d(?![DFIOQU])[A-Z][ ]\d(?![DFIOQU])[A-Z]\d$/;
-    let valide = true;
-
+    return valide = expression.test(cp);
 }
 /**
+ * Cette methode permet de valider le code postal entre.
  *
- *
- *
+ * @param valide la validite du formulaire pour l'instant
+ * @return un booleen representant la validite du formulaire apres la validation du champ present 
  */
-function validerCodePostal {
+function validerCodePostal(valide) {
     let format = true;
     valide = validerChamp("cp", 7, valide);
     if (valide) {
         let cp = document.getElementById("cp");
-	if (cp.length != 7) {
+	if (cp.length != 7 || !estCodePostalValide) {
             document.getElementById("cp_invalide").innerHTML = "Le format requis est : \'A0A 0A0\';
 	    valide = false
 	}
     }
+    return valide;
 }
 /**
  * Cette methode permet de valider le formulaire entre par l'utilisateur.
@@ -144,4 +153,5 @@ function validerFormulaire() {
     valide = validerEmail();
     valide = validerChamp("ville", 50, valide);
     valide = validerChamp("adresse", 50, valide);
+    return validerCodePostal(valide);
 }

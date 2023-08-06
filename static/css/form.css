@@ -49,7 +49,7 @@ a div {
     margin: 20px 16px 22px 10px;
     font-size: 17px;
 }
-textarea {
+form div label textarea {
     resize: none;
     font-size: 17px;
 }
@@ -77,6 +77,12 @@ input[type=number] {
 #cp {
     width: 70px;
 }
-.message {
+form div{
     color: red;
+}
+form div input {
+    color: black;
+}
+form div label {
+    color: black;
 }
