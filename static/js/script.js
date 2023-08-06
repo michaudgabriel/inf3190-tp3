@@ -38,6 +38,7 @@ function validerChamp(champ, champInvalide, max, valide) {
         valide = false;
     } else if (valeur.length > max){
         document.getElementById(champInvalide).innerHTML = "Le champ ne peut pas contenir plus de " + max + " charactères";
+	valide = false;
     } else {
         virgule = verifierVirgules(valeur, champInvalide);
     }
@@ -71,14 +72,12 @@ function validerNom() {
 function validerAge(valide) {
     let nombre = true;
     valide = validerChamp("age", "age_invalide", 2, valide);
-    if (valide) {
+    if (document.getElementById("age_invalide").innerHTML === "") {
         let age = document.getElementById("age").value;
         if(isNaN(age) || age < 0 || age > 30) {
             document.getElementById("age_invalide").innerHTML = "L'âge de l'animal doit être entre 0 et 30 ans";
 	    nombre = false;
-	} else {
-            document.getElementById("age_invalide").innerHTML = "";	
-	}
+	} 
     }
     return (valide && nombre);
 }
@@ -101,18 +100,16 @@ function verifierFormatCourriel() {
     return valide;
 }
 /**
- * Cette methode permet de valider l'email entre
+ * Cette methode permet de valider l'adresse courriel entre.
  *
  * @param valide la validite du formulaire pour l'instant
  * @return un booleen representant la validite du formulaire apres la validation du champ present
  */
-function validerEmail(valide) {
+function validerCourriel(valide) {
     let format = true;
     valide = validerChamp("courriel", "courriel_invalide", 80, valide);
-    if (valide) {
+    if (document.getElementById("courriel_invalide").innerHTML === "") {
         format = verifierFormatCourriel();
-    } else {
-        document.getElementById("courriel_invalide").innerHTML = ""i;	
     }
     return (valide && format);
 }
@@ -126,7 +123,7 @@ function validerEmail(valide) {
  * @return true si le code postal est valide, sinon false
  */
 function estCodePostalValide(cp) {
-    let expression = /^(?![DFIOQUWZ])[A-Z]\d(?![DFIOQU])[A-Z]' '\d(?![DFIOQU])[A-Z]\d$/;
+    let expression = /^(?![DFIOQUWZ])[A-Z]\d(?![DFIOQU])[A-Z][ ]\d(?![DFIOQU])[A-Z]\d$/;
     return expression.test(cp);
 }
 /**
@@ -137,9 +134,9 @@ function estCodePostalValide(cp) {
  */
 function validerCodePostal(valide) {
     valide = validerChamp("cp", "cp_invalide", 7, valide);
-    if (valide) {
+    if (document.getElementById("cp_invalide").innerHTML === "") {
         let cp = document.getElementById("cp").value;
-	if (cp.length !== 7 || !estCodePostalValide) {
+	if (cp.length !== 7 || !estCodePostalValide(cp)) {
             document.getElementById("cp_invalide").innerHTML = "Le format requis est : \'A0A 0A0\'";
 	    valide = false
 	} else {
@@ -159,9 +156,9 @@ function validerFormulaire() {
     valide = validerChamp("espece", "espece_invalide", 25, valide);
     valide = validerChamp("race", "race_invalide", 25, valide);
     valide = validerAge(valide);
-    valide = validerEmail(valide);
+    valide = validerCourriel(valide);
     valide = validerChamp("ville", "ville_invalide", 50, valide);
     valide = validerChamp("adresse", "adresse_invalide", 50, valide);
     valide = validerCodePostal(valide);
-    return validerChamp("description", "description_invalide",200, valide);
+    return validerChamp("description", "description_invalide", 200, valide);
 }
