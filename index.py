@@ -55,14 +55,23 @@ def form():
         if not trouve:
             animaux_choisis.append(choix)
             i += 1
-    return render_template('form.html', animaux = animaux_choisis)
+    return render_template('form.html', len=5, animaux=animaux_choisis)
 
-@app.route('/page_animal/<id>', methods=('GET', 'POST'))
+@app.route('/page_animal/<id>')
 def page_animal(id):
     animal = get_db().get_animal(id)
     return render_template('page.html', animal=animal)
 
-@app.route('/formulaire/', methods=('GET', 'POST'))
+@app.route('/liste_animal/<bar>')
+def liste_animal(bar):
+    animaux = get_db().get_animaux()
+    animaux_espece = []
+    for animal in animaux:
+        if animal["espece"].lower() == bar:
+            animaux_espece.append(animal)
+    return render_template('form.html', len=len(animaux_espece), animaux=animaux_espece)
+
+@app.route('/formulaire', methods=('GET', 'POST'))
 def formulaire():
     if request.method == 'POST':
         nom = request.form['nom']

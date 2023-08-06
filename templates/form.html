@@ -11,12 +11,12 @@
 </head>
 <body>
     <div class="menu">
-	<a href=""><img src="{{ url_for('static', filename='images/logo_animal.png') }}" alt="Adoption"></a>
+	<a href="{{ url_for('form') }}"><img src="{{ url_for('static', filename='images/logo_animal.png') }}" alt="Adoption"></a>
         <label for="bar"></label>
-        <input type="text" id="bar" placeholder="Nom de race d'animaux...">
+        <input type="text" id="bar" onkeypress="return event.key !=' '" placeholder="Nom d'espèce animale...">
         <a id="remplir" href="{{ url_for('formulaire') }}">Mettre en adoption</a>
     </div>
-    {% for i in range(0, 5) %}
+    {% for i in range(0, len) %}
         <a href="{{ url_for('page_animal', id=animaux[i]["id"]) }}">
             <div class="animal">
             <h2>Nom : {{ animaux[i]["nom"] }}</h2>
@@ -31,7 +31,7 @@
         let entree = document.getElementById("bar");
         entree.addEventListener("keyup", function(event) {
             if (event.key === "Enter" && entree.value.length > 0) {
-                window.location.href = window.location.hostname + "/liste_animal";
+                window.location.href = "/liste_animal/" + document.getElementById("bar").value.toLowerCase();
             }
         });
     </script>
