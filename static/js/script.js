@@ -38,6 +38,29 @@ function validerNom() {
     return (valide && virgule);
 }
 /**
+ * Cette methode permet de valider qu'un champ est rempli, ne depasse pas un certain nombre de
+ * characteres et ne contient aucune virgules.
+ *
+ * @param champ Le nom du champ que l'on souhaite valider de type chaine de characteres
+ * @param champInvalide Le id qui conteint les messages en cas d'erreurs
+ * @param max le nombre maximal de characteres acceptes pour le champ
+ * @param valide la validite du formulaire pour l'instant
+ * @return un booleen representant la validite du formulaire apres la validation du champ present
+ */
+function validerChamp(champ, champInvalide, max, valide) {
+    let virgule = true;
+    let valeur = document.getElementById(champ).value;
+    if (valeur.length === 0 ) {
+        document.getElementById(champInvalide).innerHTML = "Le champ est obligatoire";
+        valide = false;
+    } else if (valeur.length > max){
+        document.getElementById(champInvalide).innerHTML = "Le champ ne peut pas contenir plus de " + max + " charactères";
+    } else {
+        virgule = verifierVirgules(valeur, champInvalide);
+    }
+    return (valide && virgule);
+}
+/**
  * Cette methode permet de valider que l'âge est bien un nombre entre 0 et 30 ans.
  * 
  * @param valide la validite du formulaire pour l'instant
@@ -54,29 +77,6 @@ function validerAge(valide) {
 	}
     }
     return (valide && nombre);
-}
-/**
- * Cette methode permet de valider qu'un champ est rempli, ne depasse pas un certain nombre de 
- * characteres et ne contient aucune virgules.
- *
- * @param champ Le nom du champ que l'on souhaite valider de type chaine de characteres
- * @param champInvalide Le id qui conteint les messages en cas d'erreurs
- * @param max le nombre maximal de characteres acceptes pour le champ
- * @param valide la validite du formulaire pour l'instant
- * @return un booleen representant la validite du formulaire apres la validation du champ present
- */
-function validerChamp(champ, champInvalide, max, valide) {
-    let virgule = true;
-    let valeur = document.getElementById(champ).value;
-    if (champ.length === 0 ) {
-        document.getElementById(champInvalide).innerHTML = "Le champ est obligatoire";
-	valide = false;
-    } else if (champ.length > max){
-        document.getElementById(champInvalide).innerHTML = "Le champ ne peut pas contenir plus de " + max + " charactères";
-    } else {
-	virgule = verifierVirgules(valeur, champInvalide);
-    }
-    return (valide && virgule);
 }
 /**
  * Cette methode permet de verifier le format d'une adresse courriel.
