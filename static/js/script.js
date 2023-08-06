@@ -149,9 +149,9 @@ function validerFormulaire() {
     valide = validerChamp("espece", "espece_invalide", 25, valide);
     valide = validerChamp("race", "race_invalide", 25, valide);
     valide = validerAge(valide);
-    valide = validerChamp("description", "description_invalide",200, valide);
     valide = validerEmail(valide);
     valide = validerChamp("ville", "ville_invalide", 50, valide);
     valide = validerChamp("adresse", "adresse_invalide", 50, valide);
-    return validerCodePostal(valide);
+    valide = validerCodePostal(valide);
+    return validerChamp("description", "description_invalide",200, valide);
 }
