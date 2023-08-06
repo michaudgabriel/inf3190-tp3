@@ -18,26 +18,6 @@ function verifierVirgules(valeur, champ_invalide) {
     return valide;
 }
 /**
- * Cette methode permet de verifier que le nom entre est valide.
- *
- * @return true si le nom est valide, sinon false
- */
-function validerNom() {
-    let valide = true;
-    let virgule = true;
-    let nom = document.getElementById("nom").value;
-    if (nom.length === 0 ) {
-        document.getElementById("nom_invalide").innerHTML = "Le champ est obligatoire";
-	valide = false;
-    } else if (nom.length < 3 || nom.length > 20) {
-        document.getElementById("nom_invalide").innerHTML = "Le nom doit être composé de 3 à 20 lettre";
-	valide = false;
-    } else {
-	virgule = verifierVirgules(nom, "nom_invalide");
-    }
-    return (valide && virgule);
-}
-/**
  * Cette methode permet de valider qu'un champ est rempli, ne depasse pas un certain nombre de
  * characteres et ne contient aucune virgules.
  *
@@ -59,6 +39,24 @@ function validerChamp(champ, champInvalide, max, valide) {
         virgule = verifierVirgules(valeur, champInvalide);
     }
     return (valide && virgule);
+}
+/**
+ * Cette methode permet de verifier que le nom entre est valide.
+ *
+ * @return true si le nom est valide, sinon false
+ */
+function validerNom() {
+    let longueur = true;
+    let valide = validerChamp("nom", "nom_invalide", 20, true);
+    if (valide) {
+        let nom = document.getElementById("nom").value;
+        if (nom.length < 3) {
+            document.getElementById("nom_invalide").innerHTML = "Le nom doit être composé de 3 à 20 lettre";
+	    longueur = false;
+        } else {
+            document.getElementById("nom_invalide").innerHTML = "";
+    }
+    return (valide && longueur);
 }
 /**
  * Cette methode permet de valider que l'âge est bien un nombre entre 0 et 30 ans.
@@ -102,7 +100,7 @@ function verifierFormatCourriel() {
  */
 function validerEmail(valide) {
     let format = true;
-    valide = validerChamp("email", 80, valide);
+    valide = validerChamp("courriel", "courriel_invalide", 80, valide);
     if (valide) {
         format = verifierFormatCourriel();
     }
