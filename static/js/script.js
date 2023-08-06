@@ -15,6 +15,9 @@ function verifierVirgules(valeur, champ_invalide) {
 	}
         i++; 
     }
+    if (valide) {
+        document.getElementById(champ_invalide).innerHTML = "";	
+    }
     return valide;
 }
 /**
@@ -55,8 +58,9 @@ function validerNom() {
 	    longueur = false;
         } else {
             document.getElementById("nom_invalide").innerHTML = "";
-    }
+        }
     return (valide && longueur);
+    }
 }
 /**
  * Cette methode permet de valider que l'âge est bien un nombre entre 0 et 30 ans.
@@ -72,6 +76,8 @@ function validerAge(valide) {
         if(isNaN(age) || age < 0 || age > 30) {
             document.getElementById("age_invalide").innerHTML = "L'âge de l'animal doit être entre 0 et 30 ans";
 	    nombre = false;
+	} else {
+            document.getElementById("age_invalide").innerHTML = "";	
 	}
     }
     return (valide && nombre);
@@ -84,12 +90,14 @@ function validerAge(valide) {
  * @return true si l'adresse courriel correspond a l'expression reguliere, sinon false
  */
 function verifierFormatCourriel() {
-    let email = document.getElementById("email").value;
+    let email = document.getElementById("courriel").value;
     let expression = /\S+@\S+\.\S+/;
     let valide = expression.test(email);
     if (!valide) {
-        document.getElementById("email_invalide").innerHTML = "Le format de l'adresse courriel est invalide";
-    }
+        document.getElementById("courriel_invalide").innerHTML = "Le format de l'adresse courriel est invalide";
+     } else {
+        document.getElementById("courriel_invalide").innerHTML = "";	
+     }
     return valide;
 }
 /**
@@ -103,6 +111,8 @@ function validerEmail(valide) {
     valide = validerChamp("courriel", "courriel_invalide", 80, valide);
     if (valide) {
         format = verifierFormatCourriel();
+    } else {
+        document.getElementById("courriel_invalide").innerHTML = ""i;	
     }
     return (valide && format);
 }
@@ -132,6 +142,8 @@ function validerCodePostal(valide) {
 	if (cp.length !== 7 || !estCodePostalValide) {
             document.getElementById("cp_invalide").innerHTML = "Le format requis est : \'A0A 0A0\'";
 	    valide = false
+	} else {
+            document.getElementById("cp_invalide").innerHTML = "";	
 	}
     }
     return valide;
@@ -151,6 +163,5 @@ function validerFormulaire() {
     valide = validerChamp("ville", "ville_invalide", 50, valide);
     valide = validerChamp("adresse", "adresse_invalide", 50, valide);
     valide = validerCodePostal(valide);
-    document.getElementById("cp_invalide").innerHTML = "" + valide;
     return validerChamp("description", "description_invalide",200, valide);
 }
