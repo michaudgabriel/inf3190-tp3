@@ -2,7 +2,7 @@
  * Cette methode permet de verifier qu'un champ ne contient aucune virgule.
  *
  * @param valeur la valeur du champ
- * @param le id ou il faut ecrire les messages d'erreurs
+ * @param champ_invalide le id ou il faut ecrire les messages d'erreurs
  * @return true si il n'y a aucune virgule dans la valeur du champ, sinon false
  */
 function verifierVirgules(valeur, champ_invalide) {
@@ -10,7 +10,7 @@ function verifierVirgules(valeur, champ_invalide) {
     let valide = true;
     while (valide && i < valeur.length) { 
         if(valeur.charAt(i) === ',') {
-            document.getElementById(champ_invalide).innerHTML = "Le champ ne doit pas contenir de virgule ( , );
+            document.getElementById(champ_invalide).innerHTML = "Le champ ne doit pas contenir de virgule ( , )";
             valide = false;
 	}
         i++; 
@@ -25,8 +25,8 @@ function verifierVirgules(valeur, champ_invalide) {
 function validerNom() {
     let valide = true;
     let virgule = true;
-    let nom = document.getElementById("nom");
-    if (nom.length = 0 ) {
+    let nom = document.getElementById("nom").value;
+    if (nom.length === 0 ) {
         document.getElementById("nom_invalide").innerHTML = "Le champ est obligatoire";
 	valide = false;
     } else if (nom.length < 3 || nom.length > 20) {
@@ -47,7 +47,7 @@ function validerAge(valide) {
     let nombre = true;
     valide = validerChamp("age", 2, valide);
     if (valide) {
-	age = document.getElementById("age");
+        let age = document.getElementById("age").value;
         if(isNaN(age) || age < 0 || age > 30) {
             document.getElementById("age_invalide").innerHTML = "L'âge de l'animal doit être entre 0 et 30 ans";
 	    nombre = false;
@@ -66,8 +66,8 @@ function validerAge(valide) {
  */
 function validerChamp(champ, max, valide) {
     let virgule = true;
-    let valeur = document.getElementById(champ);
-    if (champ.length == 0 ) {
+    let valeur = document.getElementById(champ).value;
+    if (champ.length === 0 ) {
         document.getElementById(champ + "_invalide").innerHTML = "Le champ est obligatoire";
 	valide = false;
     } else if (champ.length > max){
@@ -85,9 +85,9 @@ function validerChamp(champ, max, valide) {
  * @return true si l'adresse courriel correspond a l'expression reguliere, sinon false
  */
 function verifierFormatCourriel() {
-    let email = document.getElementById("email");
+    let email = document.getElementById("email").value;
     let expression = /\S+@\S+\.\S+/;
-    valide = expression.test(email); 
+    let valide = expression.test(email);
     if (!valide) {
         document.getElementById("email_invalide").innerHTML = "Le format de l'adresse courriel est invalide";
     }
@@ -117,8 +117,8 @@ function validerEmail(valide) {
  * @return true si le code postal est valide, sinon false
  */
 function estCodePostalValide(cp) {
-    let expression = /^(?![DFIOQUWZ])[A-Z]\d(?![DFIOQU])[A-Z][ ]\d(?![DFIOQU])[A-Z]\d$/;
-    return valide = expression.test(cp);
+    let expression = /^(?![DFIOQUWZ])[A-Z]\d(?![DFIOQU])[A-Z]' '\d(?![DFIOQU])[A-Z]\d$/;
+    return expression.test(cp);
 }
 /**
  * Cette methode permet de valider le code postal entre.
@@ -127,12 +127,11 @@ function estCodePostalValide(cp) {
  * @return un booleen representant la validite du formulaire apres la validation du champ present 
  */
 function validerCodePostal(valide) {
-    let format = true;
     valide = validerChamp("cp", 7, valide);
     if (valide) {
-        let cp = document.getElementById("cp");
-	if (cp.length != 7 || !estCodePostalValide) {
-            document.getElementById("cp_invalide").innerHTML = "Le format requis est : \'A0A 0A0\';
+        let cp = document.getElementById("cp").value;
+	if (cp.length !== 7 || !estCodePostalValide) {
+            document.getElementById("cp_invalide").innerHTML = "Le format requis est : \'A0A 0A0\'";
 	    valide = false
 	}
     }
@@ -145,13 +144,12 @@ function validerCodePostal(valide) {
  * return true si tous les champs sont valides, sinon false
  */
 function validerFormulaire() {
-    event.preventDefault();
     let valide = validerNom();
     valide = validerChamp("espece", 25, valide);
     valide = validerChamp("race", 25, valide);
-    valide = validerAge();
+    valide = validerAge(valide);
     valide = validerChamp("description", 200, valide);
-    valide = validerEmail();
+    valide = validerEmail(valide);
     valide = validerChamp("ville", 50, valide);
     valide = validerChamp("adresse", 50, valide);
     return validerCodePostal(valide);
